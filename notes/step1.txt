@@ -17,5 +17,11 @@ Step 4 – Created Storage Account and Enabled Static Website Hosting
 - Enabled static website feature.
 - Confirmed successful output and website endpoint.
 
+Step 4B – Uploaded Website Files to Azure
+- Added commands to deploy.sh to upload website files.
+- Used az storage blob upload-batch to transfer files.
+- Confirmed successful upload and verified live website link.
+
+
 
 
