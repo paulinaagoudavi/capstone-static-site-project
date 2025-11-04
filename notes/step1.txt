@@ -1,1 +1,7 @@
 Step 1: Created local project folders and website files.
+Step 2 – Connected project to GitHub
+- Initialized Git repository.
+- Linked it to GitHub (origin).
+- Pushed initial version online.
+- Verified files appear in GitHub.
+
