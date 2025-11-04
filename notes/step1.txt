@@ -28,6 +28,13 @@ Step 4C – Pushed Automation Script to GitHub
 - Fixed push rejection using 'git pull origin main --rebase'.
 - Successfully pushed updates to GitHub repository.
 
+Step 5 – Created Virtual Network, Subnet, and VM
+- Added VNet, Subnet, and VM creation commands to deploy-infra.sh.
+- Used Ubuntu image for VM setup.
+- Script now automates full network and VM deployment.
+- Verified successful creation and noted public IP address.
+
+
 
 
 
