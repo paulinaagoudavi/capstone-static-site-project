@@ -22,6 +22,12 @@ Step 4B – Uploaded Website Files to Azure
 - Used az storage blob upload-batch to transfer files.
 - Confirmed successful upload and verified live website link.
 
+Step 4C – Pushed Automation Script to GitHub
+- Added deploy-infra.sh script to Git version control.
+- Committed changes with a descriptive message.
+- Fixed push rejection using 'git pull origin main --rebase'.
+- Successfully pushed updates to GitHub repository.
+
 
 
 
