@@ -1,12 +1,21 @@
 Step 1: Created local project folders and website files.
+
 Step 2 – Connected project to GitHub
 - Initialized Git repository.
 - Linked it to GitHub (origin).
 - Pushed initial version online.
 - Verified files appear in GitHub.
+
 Step 3 – Automated Resource Creation with Bash
 - Created deploy.sh Bash script.
 - Added variables and commands to create Azure Resource Group.
 - Learned how to make scripts executable and run them.
+
+Step 4 – Created Storage Account and Enabled Static Website Hosting
+- Added Azure CLI commands to deploy.sh for storage account creation.
+- Used StorageV2 with Standard_LRS.
+- Enabled static website feature.
+- Confirmed successful output and website endpoint.
+
 
 
