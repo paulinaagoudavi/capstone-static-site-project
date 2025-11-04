@@ -4,4 +4,9 @@ Step 2 – Connected project to GitHub
 - Linked it to GitHub (origin).
 - Pushed initial version online.
 - Verified files appear in GitHub.
+Step 3 – Automated Resource Creation with Bash
+- Created deploy.sh Bash script.
+- Added variables and commands to create Azure Resource Group.
+- Learned how to make scripts executable and run them.
+
 
