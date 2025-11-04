@@ -56,3 +56,38 @@ echo "Website files uploaded successfully!"
 # Step 7: Display the live site URL again
 WEB_URL=$(az storage account show --name $STORAGE_ACCOUNT --query "primaryEndpoints.web" --output tsv)
 echo "Your static website is now live at: $WEB_URL"
+
+# Step 8: Create Virtual Network and Subnet
+echo "Creating Virtual Network and Subnet..."
+az network vnet create \
+  --resource-group $RESOURCE_GROUP \
+  --name capstoneVNet \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name capstoneSubnet \
+  --subnet-prefix 10.0.1.0/24 \
+  --location eastus \
+
+# Step 9: Create Network Security Group
+echo "Creating Network Security Group..."
+az network nsg create \
+  --resource-group $RESOURCE_GROUP \
+  --name capstoneNSG \
+  --location eastus
+
+# Step 10: Create a Linux Virtual Machine
+echo "Creating Virtual Machine..."
+az vm create \
+  --resource-group $RESOURCE_GROUP \
+  --name capstoneVM \
+  --image Canonical:0001-com-ubuntu-server-jammy:22_04-lts:latest \
+  --size Standard_B1s \
+  --vnet-name capstoneVNet \
+  --subnet capstoneSubnet \
+  --nsg capstoneNSG \
+  --location eastus \
+  --public-ip-sku Standard \
+  --admin-username azureuser \
+  --generate-ssh-keys \
+
+
+echo "VM and network infrastructure created successfully!"
