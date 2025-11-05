@@ -58,6 +58,14 @@ Step 7 – Tested Nginx Web Server
 - Retested and confirmed successful access to the Nginx default welcome page.
 - Verified that the web server is live and publicly accessible.
 
+Step 6 – Enabled SSH Access and Deployed Website Files to VM
+- Created SSH inbound rule to allow port 22 access.
+- Successfully connected to VM using SSH (ssh azureuser@<public-ip>).
+- Installed NGINX and verified it running with systemctl status nginx.
+- Encountered connection timeout and permission denied issues during setup.
+- Resolved by adjusting NSG rule and using sudo for copying website files.
+- Uploaded website folder via scp to VM and copied into /var/www/html.
+- Verified deployment by visiting VM public IP in browser — site loaded successfully.
 
 
 
