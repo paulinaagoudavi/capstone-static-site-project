@@ -55,8 +55,7 @@ bash deploy.sh
 website/
 ├── index.html          # Main webpage
 ├── css/
-│   └── style.css       # Styling for the site
-└── images/             # (Optional) image assets
+│   └── style.css       # Styling for the site          
 
 📘 Documentation
 
