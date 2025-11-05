@@ -50,6 +50,13 @@ Step 6 – Installed and Configured Nginx Web Server
 - Verified Nginx was active and running.
 - Faced package configuration prompt during installation and selected <Ok> to continue.
 
+Step 7 – Tested Nginx Web Server
+- Retrieved the public IP address of the Capstone VM using `curl -4 ifconfig.me`.
+- Opened the public IP in a web browser to test the Nginx server.
+- Initially encountered a “site can’t be reached” error due to HTTP port 80 being blocked.
+- Added an inbound NSG rule to allow HTTP (port 80) traffic using Azure CLI.
+- Retested and confirmed successful access to the Nginx default welcome page.
+- Verified that the web server is live and publicly accessible.
 
 
 
