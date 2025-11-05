@@ -67,6 +67,14 @@ Step 6 – Enabled SSH Access and Deployed Website Files to VM
 - Uploaded website folder via scp to VM and copied into /var/www/html.
 - Verified deployment by visiting VM public IP in browser — site loaded successfully.
 
+Step 8 – Infrastructure Automation Script (infra.sh)
+- Created a bash script (infra.sh) to automate the creation of all Azure resources.
+- Script includes resource group, virtual network, subnet, NSG, public IP, NIC, and VM.
+- Ran the script successfully using 'bash infra.sh' and verified each resource creation.
+- Confirmed output showing the public IP address of the VM.
+- This ensures repeatable and automated infrastructure setup for the Capstone project.
+
+
 
 
 
