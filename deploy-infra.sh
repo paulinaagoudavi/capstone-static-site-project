@@ -74,6 +74,17 @@ az network nsg create \
   --name capstoneNSG \
   --location eastus
 
+  # Allow SSH (port 22) inbound access
+az network nsg rule create \
+  --resource-group $RESOURCE_GROUP \
+  --nsg-name $NSG_NAME \
+  --name Allow-SSH \
+  --protocol tcp \
+  --priority 3 \
+  --destination-port-ranges 22 \
+  --access allow
+
+
 # Step 10: Create a Linux Virtual Machine
 echo "Creating Virtual Machine..."
 az vm create \
