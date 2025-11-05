@@ -17,6 +17,15 @@ Step 4 – Created Storage Account and Enabled Static Website Hosting
 - Enabled static website feature.
 - Confirmed successful output and website endpoint.
 
+Step 5 – Allowed SSH Access and Connected to Capstone VM
+- Verified Network Interface and confirmed association with the correct NSG.
+- Added inbound NSG rule to allow SSH (port 22) traffic to the VM.
+- Queried the public IP of the VM using az vm show --show-details.
+- Faced timeout and NIC not found errors during connection attempts.
+Fixed issue by verifying all resources were in the same region and reapplying the SSH rule.
+
+Successfully connected to the VM using ssh azureuser@<public-ip>.
+
 Step 4B – Uploaded Website Files to Azure
 - Added commands to deploy.sh to upload website files.
 - Used az storage blob upload-batch to transfer files.
@@ -33,6 +42,14 @@ Step 5 – Created Virtual Network, Subnet, and VM
 - Used Ubuntu image for VM setup.
 - Script now automates full network and VM deployment.
 - Verified successful creation and noted public IP address.
+
+Step 6 – Installed and Configured Nginx Web Server
+- SSHed into the Capstone VM successfully using the public IP.
+- Installed Nginx using 'sudo apt install nginx -y'.
+- Started and enabled the Nginx service to run on boot.
+- Verified Nginx was active and running.
+- Faced package configuration prompt during installation and selected <Ok> to continue.
+
 
 
 
