@@ -23,7 +23,7 @@ jobs:
           source: "website/*"
           target: "/var/www/html/"
 
-      - name: Restart Nginx on VM
+      - name: Restart Nginx on Azure VM
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.AZURE_VM_IP }}
@@ -32,4 +32,4 @@ jobs:
           port: 22
           script: |
             sudo systemctl restart nginx
-            echo "Nginx restarted successfully!"
+            echo "Deployment complete! Nginx restarted successfully."
