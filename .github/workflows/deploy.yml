@@ -1,0 +1,38 @@
+name: Deploy Static Website to Azure VM
+
+on:
+  push:
+    branches:
+      - main  # Runs whenever you push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code from your repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Copy files to the Azure VM using SCP (secure copy)
+      - name: Copy website files to Azure VM
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.AZURE_VM_IP }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_SSH_KEY }}
+          port: 22
+          source: "website/*"
+          target: "/var/www/html/"
+
+      # Step 3: Restart NGINX on the VM to apply changes
+      - name: Restart NGINX on Azure VM
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.AZURE_VM_IP }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_SSH_KEY }}
+          port: 22
+          script: |
+            sudo systemctl restart nginx
+            echo "✅ Deployment successful!"
