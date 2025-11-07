@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: í·© Checkout Repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: í³¦ Copy Website Files to Azure VM
+      - name: Copy Website Files to Azure VM
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.AZURE_VM_IP }}
@@ -23,7 +23,7 @@ jobs:
           source: "website/*"
           target: "/var/www/html/"
 
-      - name: í´„ Restart Nginx on VM
+      - name: Restart Nginx on VM
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.AZURE_VM_IP }}
