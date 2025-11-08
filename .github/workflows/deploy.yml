@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Step 2: Copy website files from the /website folder to Azure VM
+      # Step 2: Copy website files to Azure VM (directly, not in /website folder)
       - name: Copy Website Files to Azure VM
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -37,8 +37,12 @@ jobs:
             echo "Cleaning old website files..."
             sudo rm -rf /var/www/html/*
 
-            echo "Moving new files from site_temp to Nginx folder..."
+            echo "Moving new files to Nginx folder..."
             sudo cp -r ~/site_temp/* /var/www/html/
+
+            echo "Setting correct permissions..."
+            sudo chown -R www-data:www-data /var/www/html
+            sudo chmod -R 755 /var/www/html
 
             echo "Restarting Nginx..."
             sudo systemctl restart nginx
