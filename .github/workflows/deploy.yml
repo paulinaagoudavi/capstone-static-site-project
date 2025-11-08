@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout your repository
+      # Step 1: Checkout repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Step 2: Copy website files to Azure VM (directly, not in /website folder)
+      # Step 2: Copy contents of website folder directly into /var/www/html
       - name: Copy Website Files to Azure VM
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -22,11 +22,11 @@ jobs:
           username: ${{ secrets.AZURE_VM_USER }}
           key: ${{ secrets.AZURE_VM_SSH_KEY }}
           port: 22
-          source: "website/*"
-          target: "/home/${{ secrets.AZURE_VM_USER }}/site_temp"
+          source: "website/**"
+          target: "/var/www/html/"
 
-      # Step 3: Deploy the files and restart Nginx
-      - name: Deploy and Restart Nginx
+      # Step 3: Restart Nginx to serve new files
+      - name: Restart Nginx
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.AZURE_VM_IP }}
@@ -34,17 +34,6 @@ jobs:
           key: ${{ secrets.AZURE_VM_SSH_KEY }}
           port: 22
           script: |
-            echo "Cleaning old website files..."
-            sudo rm -rf /var/www/html/*
-
-            echo "Moving new files to Nginx folder..."
-            sudo cp -r ~/site_temp/* /var/www/html/
-
-            echo "Setting correct permissions..."
-            sudo chown -R www-data:www-data /var/www/html
-            sudo chmod -R 755 /var/www/html
-
-            echo "Restarting Nginx..."
+            echo "Restarting Nginx to load latest site..."
             sudo systemctl restart nginx
-
-            echo "✅ Deployment complete! Your website is live."
+            echo "✅ Deployment complete! Visit your website now."
